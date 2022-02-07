@@ -2,7 +2,7 @@
 <html lang="en" class="h-100">
 
 <head>
-    <title>App Name: A Coding Project By Kfir Avraham</title>
+    <title>STACKCATS: A Coding Project By Kfir Avraham</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -25,7 +25,7 @@
     <nav class="navbar navbar-expand-md navbar-dark fixed-top">
         <div class="container-fluid">
             <a class="navbar-brand" href="#"><img src="/img/favicon-32x32.png"
-                    class="d-inline-block align-text-top pe-2"></img>APP NAME</a>
+                    class="d-inline-block align-text-top pe-2"></img>STACKCATS</a>
             <div class="vl d-none d-md-block"></div>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
                 aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
@@ -44,7 +44,7 @@
                         <a class="nav-link active" aria-current="page" href="/code.html">The Code</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" target="_blank" href="#">Git Repo</a>
+                        <a class="nav-link" target="_blank" href="https://github.com/kfirkfir89/StackCats">Git Repo</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" target="_blank" href="#">About</a>
@@ -61,16 +61,77 @@
             <div class="row row-cols-1 row-cols-lg-2">
                 <div class="col-lg-8 order-last order-lg-first">
                     <pre class="line-numbers"><code class="language-javascript">
-                        function helloWorld(){
-                            alert("hello world");
-                        }
+                            //get our user input
+                            function getValue(){
+                                //get user striing from the page
+                                document.getElementById("alert").classList.add("invisible");
+                                let userString = document.getElementById("userString").value;
+
+                                //check for a palindrome
+                                let returnObj = checkPali(userString);
+                                
+                                //display out message to  screen
+                                displayMessage(returnObj);
+                            }
+
+                            //check if string is a palindrome.
+                            function checkPali(userString){
+
+                                //Stack Cats => stack cats
+                                userString = userString.toLowerCase();
+
+                                //remove spaces and special characters
+                                let regex = /[^a-z0-9]/gi;
+                                userString = userString.replace(regex , "");
+
+                                let revString = [];
+                                let returnObj = {};
+
+                                for( let index = userString.length - 1; index >= 0 ; index-- ){
+                                    revString += userString[index];
+                                }
+
+                                if ( revString == userString ){
+                                    returnObj.msg = "Well Done! You entered a palindrome!"
+                                }else{
+                                    returnObj.msg = "Sorry! You did not enter a palindrome!"
+                                }
+
+                                returnObj.reversed = revString;
+
+                                return returnObj;
+
+                            }
+
+
+                            //display a nessage to the string.
+                            function displayMessage(returnObj){
+
+                                document.getElementById("alertHeader").innerHTML = returnObj.msg;
+                                document.getElementById("msg").innerHTML = `Yout phrase reversed is: ${returnObj.reversed}`;
+                                document.getElementById("alert").classList.remove("invisible");
+
+                            }
                         </code>
                     </pre>
                 </div>
                 <div class="col-lg-4">
-                    <p>The Code is structed in one function</p>
-                    <h5>Hello World</h5>
-                    <p>Hello World is a function that displays an alert with a message of "Hello World"</p>
+                    <h5>getValues</h5>
+                    <p><strong>getValues</strong> gets the user input from the page.
+                         it utilizes <strong>getElementById</strong> to pull the values from the page.
+                         it stores it in <strong>userString</strong> and then passes those values to <strong>checkPali </strong>function.<br>
+                         The function <strong>checkPali</strong> returns new obj that contain the display values and pass it to <strong>displayMessage</strong> function to display the data.
+                        </p>
+                    <h5>checkPali</h5>
+                    <p><strong>checkPali</strong> takes in <strong>userString</strong> turn it to lower case array and then clear any char that is not lower case or number (!@$#) by using regex phrase.<br>
+                        We reversed the <strong>userString</strong> array and stores it in new variable <strong>revString</strong> and then compare them to check for palindrome.<br>
+                        If there is palindrome match we store a sucsses mesaage in the <strong>returnObj</strong> else we stores a faild mesaage.<br>
+                        We sotres <strong>revString</strong> in the obj and return <strong>returnObj</strong>.
+                        </p>
+                    <h5>displayMessage</h5>
+                    <p><strong>displayMessage</strong> gets <strong>returnObj</strong> and display the message and the reversed string.<br>
+                        We remove the class "invisible" from the alret Div to be able to show it  up.
+                        </p>
                 </div>
             </div>
         </div>

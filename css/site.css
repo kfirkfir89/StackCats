@@ -1,8 +1,8 @@
 :root{
-    --primary-color: #1D5888;
-    --secondary-color: #FF9A3B; /*#1CA8FC-blue*/
+    --primary-color: #233356;
+    --secondary-color: #547FDD; /*#1CA8FC-blue*/
     --dark-color: #292929;
-    --white-color: #dff3e4;
+    --white-color: #f2fdfd;
 }
 
 .smallfont{
@@ -19,14 +19,15 @@
 
 body {
     color:var(--dark-color);
+    background-color: var(--white-color);
 }
 
 nav {
-    background-color:var(--dark-color);
+    background-color:var(--primary-color);
 }
 
 footer {
-    background-color: var(--dark-color);
+    background-color: var(--primary-color);
 
 }
 
@@ -80,6 +81,10 @@ code[class*="language-"], pre[class*="language-"] {
     height: 30px;
     margin-right: 10px;
     opacity: 0.4;
+}
+
+.btn-outline-dark:hover{
+    background-color: var(--secondary-color);
 }
 
 main>.container {
